@@ -1,0 +1,32 @@
+.success{
+    background-color: rgb(55, 187, 55);
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
+.navbar-brand{
+    margin-left: 3rem;
+    font-size: 32px;
+}
+
+.nav-item{
+    background-color: lightgoldenrodyellow;
+    border-radius: 20px;
+    ;
+}
+
+.navbar{
+    background-color: rgb(107, 175, 44) !important;
+}
+
+.add-more-button{
+    width: 8%;
+}
+
+button.btn.btn-secondary {
+    background-color: darkgray;
+}
+
+button.btn.btn-danger {
+    background-color: crimson;
+}

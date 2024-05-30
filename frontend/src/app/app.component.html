@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="../assets/app-logo.png" alt="App logo" style="height: 45px; padding-bottom: 7px; " width="60px">
+    <span style="margin-left: 2%;">
+      Automated Grading System for Examination Papers
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" style="margin-left: 30%;" id="navbarSupportedContent">
+    <ul class="navbar-nav" style="margin-top:5px;">
+      <li class="nav-item" style="margin-right: 30px;">
+        <a class="nav-link" target="_blank"
+          href="https://www.geeksforgeeks.org/understanding-tf-idf-term-frequency-inverse-document-frequency/">
+          Algorithm Link 1</a>
+      </li>
+      <li class="nav-item" style="margin-right: 30px;">
+        <a class="nav-link" target="_blank"
+          href="https://platform.openai.com/docs/guides/text-generation/chat-completions-api">
+          Algorithm Link 2</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">About us </a>
+      </li>
+
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li> -->
+    </ul>
+  </div>
+</nav>
+<div class="container" style="margin-top: 50px;">
+  <!-- <form> -->
+  <h1> Automated Examination Paper Evaluation! </h1>
+  <hr>
+  <form [formGroup]="answerForm" (ngSubmit)="onSubmit()">
+
+    <p>
+      <label for="sampleAnswer">Question:</label>
+      <input type="text" id="sampleQuestion" name="sampleQuestion" formControlName="sampleQuestion"
+        class="form-control">
+    </p>
+
+    <p>
+      <label for="sampleAnswer">Editorial Answer:</label>
+      <!-- <input type="text" id="sampleAnswer" name="sampleAnswer" formControlName="sampleAnswer" class="form-control"> -->
+      <!-- // make tgis input textarea -->
+      <textarea id="sampleAnswer" name="sampleAnswer" formControlName="sampleAnswer" class="form-control" style=" height: 200px;"></textarea>
+    </p>
+
+    <table class="table table-bordered" formArrayName="answer">
+      <tr>
+        <th colspan="2">Add Multiple Test Answers:</th>
+        <th width="150px"><button type="button" (click)="addAnswer()" class="btn btn-secondary">Add More</button></th>
+      </tr>
+      <tr *ngFor="let answer of answer().controls; let i=index" [formGroupName]="i">
+        <td>
+          Test Answer :
+          <input type="text" formControlName="testAnswer" class="form-control">
+        </td>
+        <td>
+          Match Score:
+          <input type="text" formControlName="score" class="form-control">
+        </td>
+        <td>
+          <button (click)="removeAnswer(i)" class="btn btn-danger" style="margin-top: 21px;">Remove</button>
+        </td>
+      </tr>
+    </table>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+
+
+
+</div>
+<app-spinner></app-spinner>
